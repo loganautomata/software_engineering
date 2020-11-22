@@ -1,139 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>UserInfo</title>
-    <style type="text/css">
-        .Content-Main{
-            max-width: 500px;
-            margin: auto;
-            border: none;
-            border-radius: 5px; 
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
-            font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
-            text-shadow: 1px 1px 1px #444;
-            color: #D3D3D3;
-            background: #555;
-        }
-        .Content-Main h1{
-            padding: 8px 0px 40px 10px;
-            display: block;
-            border-bottom: 1px solid #444;
-        }
-        .text1{
-            margin-left: 3px;
-        }
-        .Content-Main label{
-            margin: 0px 0px 5px;
-            display: block;
-        }
-        .fileInputContainer{
-            height: 99px;
-            width: 99px;
-            margin: 20px 20px 20px 20px ;
-            border: none;
-            background: url("img/Example.jpg");
-            overflow: hidden; 
-            position: relative; 
-        }
-        .fileInput{
-            height: 106px;
-            border: none;
-            font-size: 300px;
-            opacity: 0;  
-            filter:alpha(opacity=0);
-            cursor: pointer;
-            position: absolute;
-        }
-        .Content-Main label>span{
-            width: 20%;
-            float: left;
-            text-align: right;
-            padding-right: 10px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        .Main-sex{
-            padding-right: 13px;
-            padding-bottom: 13px;
-            font-weight: bold;
-            line-height: 4px; 
-        }
-        .Main-sex input[type=checkbox]{
-            margin-top:6px;
-            vertical-align:middle; 
-        }
-        .Content-Main input[type="text"],.Content-Main input[type="email"],.Content-Main textarea{
-            height: 25px;
-            width: 70%;
-            line-height: 15px;
-            padding: 5px 0px 5px 5px; 
-            margin-bottom: 16px;
-            margin-right: 6px;
-            margin-top: 2px;
-            border: none;
-            border-radius:2px;
-            -webkit-border-radius:2px;
-            -moz-border-radius:2px;
-            outline: 0 none; 
-            background:  #DFDFDF;
-            color: #525252;
-        }
-        .Content-Main textarea{
-            height: 100px;
-            width: 70%;
-            padding: 5px 0px 0px 5px;
-        }
-        .Content-Main .button{
-            padding: 8px 24px 8px 24px;
-            margin-bottom: 8px;
-            border: none;
-            border-radius: 4px;
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
-            font-weight: bold;
-            text-shadow: 1px 1px 1px #FFE477;
-            box-shadow: 1px 1px 1px  #3D3D3D;
-            -moz-box-shadow: 1px 1px 1px  #3D3D3D;
-            -webkit-box-shadow: 1px 1px 1px  #3D3D3D;
-            color: #585858;
-            background: #f6ff0a;
-        }
-        .Content-Main .button:hover{
-            color:  #333;
-            background-color:  #EBEBEB ;
-        }
-    </style>
-</head>
-<body>
-        <div class="Content-Main">
-            <form  action="" method="post" class="form-userInfo">
-                <h1>个人信息</h1>
-                <span class="text1">请在文本框中完善您的个人信息：</span>
-                <p>
-                <div class="fileInputContainer">
-                    <input class="fileInput" id="" type="file" name="">
-                </div>
-                <label>
-                    <span>Your name:</span>
-                    <input type="text"  name="name" placeholder="Your Full Name">
-                </label>
-                <label class="Main-sex">
-                    <span>Your sex:</span>
-                    <input type="checkbox" class="man">男
-                    <input type="checkbox" class="women">女
-                </label>
-                <label>
-                    <span>Your email :</span>
-                    <input type="email" name="email" placeholder="@.com">
-                </label>
-                <label>
-                    <span>Your phone:</span>
-                    <input type="text" name="phone" placeholder="Please input 11 number">
-                </label>
-                <label>
-                    <span>Message:</span>
-                    <textarea id="message" name="message" placeholder="Your message to us"></textarea>
-                </label>
-                <label>
++<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            form
+            {
+                width:100%;
+                height:700px;
+                margin: auto;
+                background-image:url(picture.jpg);
+                background-size: cover;
+            }
+            div
+            {
+                display:inline-block;
+                padding-top: 80px;
+                padding-right: 20px;
+            }
+            h2
+            {
+                font-family: "微软雅黑";
+                font-size: 40px;
+                color:black;
+            }
+            p
+            {
+                font-family: "微软雅黑";
+                font-size: 20px;
+                color:black;
+            }
+        </style>
+    </head>
+    <body>
+        <form name="UserInfor">
+            <center>
+            <div>
+            <h2>
+                用户名
+            </h2>
+            <p>
+                <a href="UserInfoRevise.html">个人设置</a>
+            </p>
+            <div class="layui-input-inline">
+            <p>
+                状态:
+            </p>
+            <span style="width:15px;height:15px;border-radius:50%;background-color:grey;display: block"></span>
+            
+            </div>
+            <p>
+                创建时间:    
+            </p>
+            <p>
+                登陆时间：
+            </p> 
+            <p>
+                登陆ip:
+            </p>
+            </div>
+            </center>
+        </form>
+    </body>
+</html>
