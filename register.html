@@ -88,32 +88,102 @@
     </style>
   </head>
   <body>
-    <div class="box">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <div class="box" id="app">
       <h2>用户注册</h2>
       <div class="input_box">
         <b>账号&nbsp;&nbsp;&nbsp;</b>
-        <input id="uname" type="text" name="user" placeholder="请输入用户名">
+        <input id="uname" type="text" placeholder="请输入用户名" v-model="username">
       </div>
       <div class="input_box">
         <b>密码&nbsp;&nbsp;&nbsp;</b>
-        <input id="upass" type="password" name="psw" placeholder="请输入密码">
+        <input id="upass" type="password" placeholder="请输入密码" v-model="password">
       </div>
       <div class="input_box">
-        <b>重复密码&nbsp;&nbsp;&nbsp;</b>
-        <input id="upass_re" type="password" name="psw_re" placeholder="请再次输入密码">
+        <b>确认密码&nbsp;&nbsp;&nbsp;</b>
+        <input id="upass_re" type="password" placeholder="请再次输入密码" v-model="passwordRe">
       </div>
-      <div id="error_box"><br></div>
       <div class="input_box">
-        <button type="button" class="btn_Info" onclick="fnRegister()">注册</button>
+        <input type="button" value="注册" class="btn_Info" @click="fnRegister">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" class="btn" onclick="window.location.href='login.html'">已有账号</button>
       </div>
     </div>
-    <script type="text/javascript">
-        function fnRegister() 
-        {
-         
-        }
+    <script>
+        var app=new Vue({
+          el:"#app",
+          data:{
+            username:'',
+            password:'',
+            passwordRe:'',
+            content:'',
+            isCheck:true,
+          },
+          methods:{
+            fnRegister:function(){
+              var that=this;
+              if(!that.username){
+                alert("账号不能为空！")
+                that.isCheck=false;
+              }
+              else{
+                that.isCheck=true;
+                if(!that.password){
+                  alert("密码不能为空！");
+                  that.isCheck=false;
+                }
+                else{
+                  that.isCheck=true;
+                  if(!that.passwordRe){
+                    alert("请再次输入密码！");
+                    that.isCheck=false;
+                  }
+                  else{
+                    that.isCheck=true;
+                    if(that.passwordRe!=that.password){
+                      alert("两次输入密码不一致！");
+                      that.isCheck=false;
+                    }
+                    else{
+                      that.isCheck=true;
+                    }
+                  }
+                }
+              }
+              if(that.isCheck)
+              {
+                axios.post("https://api.loganren.xyz/course/v5.0/user",
+                {
+                  data: {
+                    username: that.name,
+                    password: that.password,
+                    passwordRe:that.passwordRe
+                  }
+                })
+                .then(function(response){
+                  this.content=response.data;
+                  alert(this.content);
+                },
+                function(err){
+                  that.content=err.data;
+                  alert(that.data);
+                 })
+                /*axios.post("https://autumnfish.cn/api/user/reg",{username:that.username})
+                .then(function(response){
+                  that.content=response.data;
+                  alert(that.content);
+                },function(err){ 
+                  that.content=err.data;
+                  alert(that.data);
+                })*/
+              }
+              
+              /*
+              */
+            },
+          }
+        })
     </script>
   </body>
 </html>

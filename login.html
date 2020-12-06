@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <title>用户登录页面</title>
     <style type="text/css">
         *{
@@ -82,28 +83,80 @@
     </style>
   </head>
   <body>
-    <div class="box">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <div class="box" id="app">
       <h2>用户登录</h2>
       <div class="input_box">
         <b>账号&nbsp;&nbsp;&nbsp;</b>
-        <input id="uname" type="text" name="user" placeholder="请输入用户名">
+        <input id="uname" type="text" name="user" placeholder="请输入用户名" v-model="username">
       </div>
       <div class="input_box">
         <b>密码&nbsp;&nbsp;&nbsp;</b>
-        <input id="upass" type="password" name="psw" placeholder="请输入密码">
+        <input id="upass" type="password" name="psw" placeholder="请输入密码" v-model="password">
       </div>
-      <div id="error_box"><br></div>
       <div class="input_box">
-        <button type="button" class="btn" onclick="fnLogin()">登录</button>
+        <input type="button" value="登录" class="btn" @click="fnLogin">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" class="btn_Info" onclick="window.location.href='register.html'">注册</button>
       </div>
     </div>
-    <script type="text/javascript">
-        function fnLogin() 
-        {
-         
-        }
+    <script>
+        var app=new Vue({
+          el:"#app",
+          data:{
+            username:'',
+            password:'',
+            content:'',
+            isCheck:true,
+          },
+          methods:{
+            fnLogin:function(){
+              var that=this;
+              if(!that.username)
+              {
+                alert("账号不能为空！");
+                that.isCheck=false;
+              }
+              else{
+                that.isCheck=true;
+                if(!that.password){
+                  alert("密码不能为空！");
+                  that.isCheck=false;
+                }
+                else{
+                  that.isCheck=true;
+                }
+              }
+              /*axios.post("https://autumnfish.cn/api/user/log",
+                {username:that.username,password:that.password})
+                .then(function(response){
+                  that.content=response.data;
+                  alert(that.content);
+                },function(err){ 
+                  that.content=err.data;
+                  alert(that.data);
+                })
+                */
+                if(that.isCheck){
+                  axios.post("https://api.loganren.xyz/course/v5.0/token",
+                  {
+                    data: {
+                    username: that.username,
+                    password: that.password
+                    }
+                  })
+                  .then(function(response){
+                    that.content=response.data;
+                    alert(that.content);
+                  },function(err){ 
+                    that.content=err.data;
+                    alert(that.data);
+                  })
+                }
+            }
+          }
+      })
     </script>
   </body>
 </html>
