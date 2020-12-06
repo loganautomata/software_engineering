@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>用户注册页面</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            background-image: url("img/2.jpg");
+            background-size: cover;
+        }
+        .box
+        {
+            width: 400px;
+            height: 380px;
+            position: absolute;
+            left: 50%;
+            top: 42%;
+            margin-left: -195px;
+            margin-top: -160px;
+            text-align:center;
+            background-color: rgba(26, 24, 24, 0.199);
+            border-radius: 10px;
+        }
+        #uname{
+            width:200px;
+            height: 30px;
+            margin-top: 50px;
+
+        }
+        #upass{
+            width: 200px;
+            height: 30px;
+            margin-top: 10px;
+        }
+        #upass_re{
+            width: 200px;
+            height: 30px;
+            margin-top: 5px;
+            margin-right: 35px;
+        }
+        .box h2{
+            font-weight:50px;
+            color: #ebe3e3;
+            font-size: 25px;
+            line-height: 60px;
+            overflow: hidden;
+            border-bottom: 6px solid #4caf50;
+        }
+        .input_box{
+            width:350px;
+            padding-bottom: 15px;
+            margin: 0 auto;
+            overflow: hidden;
+            margin-right:1px;
+        }
+        b{
+            font-size:18px;
+            margin-right: 15px;
+            color: white;
+        }
+        #error-box{
+            font-size: 18px;
+            color:crimson;
+        }
+        .btn{
+            width:80px;
+            background: none;
+            border:2px solid #4caf50;
+            color: white;
+            padding:5px;
+            font-size: 15px;
+            margin:auto;
+        }
+        .btn_Info{
+            width:80px;
+            background: none;
+            border:2px solid #4caf50;
+            color: white;
+            padding:5px;
+            font-size: 15px;
+            margin: 10px 0;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h2>用户注册</h2>
+      <div class="input_box">
+        <b>账号&nbsp;&nbsp;&nbsp;</b>
+        <input id="uname" type="text" name="user" placeholder="请输入用户名">
+      </div>
+      <div class="input_box">
+        <b>密码&nbsp;&nbsp;&nbsp;</b>
+        <input id="upass" type="password" name="psw" placeholder="请输入密码">
+      </div>
+      <div class="input_box">
+        <b>重复密码&nbsp;&nbsp;&nbsp;</b>
+        <input id="upass_re" type="password" name="psw_re" placeholder="请再次输入密码">
+      </div>
+      <div id="error_box"><br></div>
+      <div class="input_box">
+        <button type="button" class="btn_Info" onclick="fnRegister()">注册</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn" onclick="window.location.href='login.html'">已有账号</button>
+      </div>
+    </div>
+    <script type="text/javascript">
+        function fnRegister() 
+        {
+         
+        }
+    </script>
+  </body>
+</html>
