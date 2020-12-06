@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="utf-8">
+    <title>Comment</title>
+
+    <link rel = "stylesheet" type="text/css" href="resource/css/style.css">
+    <link rel="stylesheet" type="text/css" href="resource/css/grade.css">
+    <script type="text/javascript" src = "./resource/JS/jquery.js"></script>
+    <script type="text/javascript" src = "./resource/JS/grade.js"></script>
+
+</head>
+
+<body style="zoom:1">
+<div id = "root">
+    <div class  = "begin_img_holder" id = "desktop" >
+        <div class="header_box text-container">THERE IS HEADER. <br>//TODO</div>
+        <div class = background ></div>
+        <div class = "container" style="margin-left: auto; width: auto;margin-top: -150px">
+            <h1 style="text-align: center; padding-bottom: 30px">我的评分</h1>
+            <div class="content">
+                <div id="myPoint">
+                    <span><big>5</big><small>.0</small></span>
+                    <div>
+                        <img src="./resource/img/star5.gif" />
+                        <em>(一般)</em>
+                    </div>
+                </div>
+                <div id="doPoint">
+                    <h3 style="text-align: center; padding-bottom: 30px; display: block">我的评分</h3>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                        <tr>
+                            <th>上课状态：</th>
+                            <td><span class="star5" id="item1" v="5">
+								<small>1</small>
+								<small>2</small>
+								<small>3</small>
+								<small>4</small>
+								<small>5</small>
+								<small>6</small>
+								<small>7</small>
+								<small>8</small>
+								<small>9</small>
+								<small>10</small>
+							</span></td>
+                            <td><strong>5</strong> <em>(一般)</em></td>
+                        </tr>
+                        <tr>
+                            <th>课后作业：</th>
+                            <td><span class="star5" id="item2" v="5">
+								<small>1</small>
+								<small>2</small>
+								<small>3</small>
+								<small>4</small>
+								<small>5</small>
+								<small>6</small>
+								<small>7</small>
+								<small>8</small>
+								<small>9</small>
+								<small>10</small>
+							</span></td>
+                            <td><strong>5</strong> <em>(一般)</em></td>
+                        </tr>
+                        <tr>
+                            <th>最终成绩：</th>
+                            <td><span class="star5" id="item3" v="5"><small>1</small>
+								<small>2</small>
+								<small>3</small>
+								<small>4</small>
+								<small>5</small>
+								<small>6</small>
+								<small>7</small>
+								<small>8</small>
+								<small>9</small>
+								<small>10</small></span></td>
+                            <td><strong>5</strong> <em>(一般)</em></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <form id="form1" name="form1" action="" method="get">
+                    <input id="pointV1" type="hidden" value="5" name="pointV1" />
+                    <input id="pointV2" type="hidden" value="5" name="pointV2" />
+                    <input id="pointV3" type="hidden" value="5" name="pointV3" />
+                    <label>评论内容：<textarea id="content" name="content" rows="5" cols="50"></textarea></label>
+                    <input type="submit" class = submit style="font-size: 20px" value="提交"/>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class = "foot">
+        <div class="foot-container">
+            <p class = "d-block">Copyright &copy 2020, ******.</p>
+            <p class = d-block>Contact Us:
+                <a href="mailto:emample@example.com">emample@example.com</a>
+            </p>
+        </div>
+    </footer>
+
+</div>
+</body>
+
+</html>
