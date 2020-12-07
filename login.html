@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <title>用户登录页面</title>
     <style type="text/css">
         *{
@@ -113,49 +112,25 @@
           methods:{
             fnLogin:function(){
               var that=this;
-              if(!that.username)
+              axios.post("https://api.loganren.xyz/course/v0.5/token",
               {
-                alert("账号不能为空！");
-                that.isCheck=false;
-              }
-              else{
-                that.isCheck=true;
-                if(!that.password){
-                  alert("密码不能为空！");
-                  that.isCheck=false;
-                }
-                else{
-                  that.isCheck=true;
-                }
-              }
-              /*axios.post("https://autumnfish.cn/api/user/log",
-                {username:that.username,password:that.password})
-                .then(function(response){
-                  that.content=response.data;
-                  alert(that.content);
-                },function(err){ 
-                  that.content=err.data;
-                  alert(that.data);
-                })
-                */
-                if(that.isCheck){
-                  axios.post("https://api.loganren.xyz/course/v5.0/token",
-                  {
-                    data: {
-                    username: that.username,
-                    password: that.password
-                    }
-                  })
-                  .then(function(response){
-                    that.content=response.data;
-                    alert(that.content);
-                  },function(err){ 
-                    that.content=err.data;
-                    alert(that.data);
-                  })
-                }
-            }
+                username: that.username,
+                password: that.password
+              })
+              .then(function(response){
+                let jsonobj = response.data;
+                that.content=jsonobj.message;
+                alert(that.content);
+                let cookie=jsonobj.data.token;
+                document.cookie="Token="+ cookie;
+                document.cookie="Username="+username;
+              },function(err){
+                let jsonobj = err.response.data;
+                that.content=jsonobj.message;
+                alert(that.content);
+              })
           }
+        }
       })
     </script>
   </body>

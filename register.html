@@ -118,69 +118,26 @@
             password:'',
             passwordRe:'',
             content:'',
-            isCheck:true,
           },
           methods:{
             fnRegister:function(){
               var that=this;
-              if(!that.username){
-                alert("账号不能为空！")
-                that.isCheck=false;
-              }
-              else{
-                that.isCheck=true;
-                if(!that.password){
-                  alert("密码不能为空！");
-                  that.isCheck=false;
-                }
-                else{
-                  that.isCheck=true;
-                  if(!that.passwordRe){
-                    alert("请再次输入密码！");
-                    that.isCheck=false;
-                  }
-                  else{
-                    that.isCheck=true;
-                    if(that.passwordRe!=that.password){
-                      alert("两次输入密码不一致！");
-                      that.isCheck=false;
-                    }
-                    else{
-                      that.isCheck=true;
-                    }
-                  }
-                }
-              }
-              if(that.isCheck)
+              axios.post("https://api.loganren.xyz/course/v0.5/user",
               {
-                axios.post("https://api.loganren.xyz/course/v5.0/user",
-                {
-                  data: {
-                    username: that.name,
-                    password: that.password,
-                    passwordRe:that.passwordRe
-                  }
-                })
-                .then(function(response){
-                  this.content=response.data;
-                  alert(this.content);
-                },
-                function(err){
-                  that.content=err.data;
-                  alert(that.data);
-                 })
-                /*axios.post("https://autumnfish.cn/api/user/reg",{username:that.username})
-                .then(function(response){
-                  that.content=response.data;
-                  alert(that.content);
-                },function(err){ 
-                  that.content=err.data;
-                  alert(that.data);
-                })*/
-              }
-              
-              /*
-              */
+                username: that.username,
+                password: that.password,
+                passwordRe:that.passwordRe
+              })
+              .then(function(response){
+                let jsonobj = response.data;
+                that.content=jsonobj.message;
+                alert(that.content);
+              },
+              function(err){
+                let jsonobj = err.response.data;
+                that.content=jsonobj.message;
+                alert(that.content);
+             })
             },
           }
         })
