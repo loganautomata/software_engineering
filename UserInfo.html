@@ -30,36 +30,82 @@
                 font-size: 20px;
                 color:black;
             }
+			.style1{
+			width:15px;
+			height:15px;
+			border-radius:50%;
+			background-color:green;
+			display: block";
+			}
         </style>
+        <script type="text/javascript" src="./UserInfo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<button type="button" style="font-size: 20px" onclick="myfunction">查询</button>
     </head>
     <body>
         <form name="UserInfor">
             <center>
             <div>
             <h2>
-                用户名
+                用户名<span>document.write(username)</span>
             </h2>
             <p>
                 <a href="UserInfoRevise.html">个人设置</a>
             </p>
             <div class="layui-input-inline">
             <p>
-                状态:
+                状态: <script>document.write(replace(username.status))</script>
             </p>
-            <span style="width:15px;height:15px;border-radius:50%;background-color:grey;display: block"></span>
+            <input id =btn1 class="style1" />
             
             </div>
             <p>
-                创建时间:    
+                创建时间:    <script>document.write(username.create_time)</script>
             </p>
             <p>
-                登陆时间：
+                登陆时间：<script>document.write(username.last_login_time)</script>
             </p> 
             <p>
-                登陆ip:
+                登陆ip:<script>document.write(username.last_login_ip)</script>
             </p>
-            </div>
+     </div>
             </center>
         </form>
+    <script>
+		function replace(num){
+		var btn1=document.getElementById("btn1");
+		if(num==1){
+			btn1.style.backgroundColor="red";
+		}
+		
+	</script>
+	
+        
+    <script>
+    function myfunction(){
+        //let username = "cmq";
+        let username=localStrorage.getItem("username");
+        let token=localStrorage.getItem("token");
+
+	axios.get('https://api.loganren.xyz/course/v0.5/user/'+username, {
+    params: {
+      
+    }
+    },{
+      headers: {
+        'Authorization': 'Bear'+'\n' + token
+      }
+    })
+  .then(function (response) {
+    alert(response.data);
+	console.log(response);
+  })
+  .catch(function (error) {
+    alert(error.data);
+  });
+  
+}
+    </script>
     </body>
 </html>
