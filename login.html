@@ -112,7 +112,7 @@
           methods:{
             fnLogin:function(){
               var that=this;
-              axios.post("https://api.loganren.xyz/course/v0.5/token",
+              axios.post("https://api.loganren.xyz/course/v1.0/token",
               {
                 username: that.username,
                 password: that.password
@@ -121,15 +121,18 @@
                 let jsonobj = response.data;
                 that.content=jsonobj.message;
                 alert(that.content);
-                let cookie=jsonobj.data.token;
-                document.cookie="Token="+ cookie;
-                document.cookie="Username="+username;
+                let token=jsonobj.data.token;
+                //document.cookie="Token="+ cookie;
+                //document.cookie="Username="+username;
+                localStorage.setItem("token", token);
+                localStorage.setItem("username", that.username);
+                //window.location.href="./mainpage.html";
               },function(err){
                 let jsonobj = err.response.data;
                 that.content=jsonobj.message;
                 alert(that.content);
               })
-          }
+          },
         }
       })
     </script>
