@@ -126,7 +126,7 @@
                 //document.cookie="Username="+username;
                 localStorage.setItem("token", token);
                 localStorage.setItem("username", that.username);
-                //window.location.href="./mainpage.html";
+                window.location.href="./mainpage.html";
               },function(err){
                 let jsonobj = err.response.data;
                 that.content=jsonobj.message;

@@ -132,6 +132,7 @@
                 let jsonobj = response.data;
                 that.content=jsonobj.message;
                 alert(that.content);
+                window.location.href="./login.html";
               },
               function(err){
                 let jsonobj = err.response.data;
