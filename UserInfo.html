@@ -1,4 +1,4 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -38,74 +38,89 @@
 			display: block";
 			}
         </style>
-        <script type="text/javascript" src="./UserInfo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        
+        
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<button type="button" style="font-size: 20px" onclick="myfunction">查询</button>
+		
     </head>
     <body>
         <form name="UserInfor">
             <center>
             <div>
             <h2>
-                用户名<span>document.write(username)</span>
+                用户名 <span><a id="username"> </a></span>
             </h2>
-            <p>
-                <a href="UserInfoRevise.html">个人设置</a>
-            </p>
+            
             <div class="layui-input-inline">
             <p>
-                状态: <script>document.write(replace(username.status))</script>
+                状态: <span><h2 id="status"></h2></span>
             </p>
             <input id =btn1 class="style1" />
             
             </div>
             <p>
-                创建时间:    <script>document.write(username.create_time)</script>
+                创建时间:    <span id="create_time"></span>
             </p>
             <p>
-                登陆时间：<script>document.write(username.last_login_time)</script>
+                登陆时间：<span id="last_login_time"></span>
             </p> 
             <p>
-                登陆ip:<script>document.write(username.last_login_ip)</script>
+                登陆ip:<span id="last_login_ip"></span>
             </p>
      </div>
             </center>
         </form>
+	    <!--<input type="button" name="confirmAlter" value="确认修改" οnclick="myfunction()"/>-->
     <script>
+    
+
+	
+	//myfunction();
+	
 		function replace(num){
-		var btn1=document.getElementById("btn1");
+		var btn1=document.getElementById('btn1');
 		if(num==1){
 			btn1.style.backgroundColor="red";
 		}
+		}
+	 
 		
-	</script>
-	
-        
-    <script>
-    function myfunction(){
-        //let username = "cmq";
-        let username=localStrorage.getItem("username");
-        let token=localStrorage.getItem("token");
-
-	axios.get('https://api.loganren.xyz/course/v0.5/user/'+username, {
+    (function (){
+        var username = "cmq";
+        //let username=localStrorage.getItem("username");
+        let token=localStorage.getItem("token");
+		//axios.defaults.headers.common['Authorization'] = token;
+		//let token = '';
+		//var token=localStrorage.getItem("token");
+	//axios.interception.request.use(config => {
+	//config.headers.Authorization = window.localStorage.getItem('token')
+	//return config
+	//})
+	axios.get('https://api.loganren.xyz/course/v1.0/user/'+username, {
     params: {
       
     }
-    },{
-      headers: {
-        'Authorization': 'Bear'+'\n' + token
-      }
     })
   .then(function (response) {
-    alert(response.data);
+    //alert(response.data);
 	console.log(response);
+    let data = response.data.data;
+    console.log(data);
+    document.getElementById('username').innerHTML = data['username'];
+   //unpkg.com/axios/dist/axios.min.js document.getElementById('').innerHTML = data['status'];
+	document.getElementById('create_time').innerHTML =  data['create_time'];
+	document.getElementById('last_login_time').innerHTML =  data['last_login_time'];
+	document.getElementById('last_login_ip').innerHTML =  data['last_login_ipv4'];
   })
   .catch(function (error) {
-    alert(error.data);
+    //alert(error.data);
+    console.log(response.data);
   });
   
 }
+    )();
+
     </script>
     </body>
 </html>
+
