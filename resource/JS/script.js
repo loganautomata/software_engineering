@@ -48,6 +48,7 @@ function searchClass(){
                     .replace("@teacher@", obj.teachername)
                     .replace("@score@", obj.score)
                     .replace("@cid@", obj.cid);
+                storeScore(obj.cid, obj.score);
             }
             http += "</div>";
             // 修改页面代码
@@ -66,22 +67,72 @@ function setSelected(cid){
     window.localStorage.setItem("curr_cid", cid);
 }
 
+function storeScore(cid, score){
+    window.localStorage.setItem(cid, score);
+}
+
 function searchComment(){
-    let classId = window.localStorage.getItem("curr_cid", cid);
+    let classId = window.localStorage.getItem("curr_cid");
+    let url = "https://api.loganren.xyz/course/v1.0/comment/"
     if(classId == null){
         alert("curr cid no found.");
         return;
     }
+    url += classId.toString();
+
+    let http = "        <div class = \"container anchor pb-5\">\n" +
+        "            <h1 class = \"text-container\">评论</h1>\n" +
+        "            <div class = container style=\"margin-top: 40px\">";
+
+    let rawComment = "                <div class = \"board-holder comment\">\n" +
+        "                    <div class = \"board-head bg-dimmed\">\n" +
+        "                        <div class = d-flex style=\"width: 100%\">\n" +
+        "                            <img src=\"resource/img/avatars/@number@.png\" style=\"width: 60px; border-radius: 20px\">\n" +
+        "                            <div class = \"d-block right\" style=\"margin-top: 10px\">\n" +
+        "                                <div class = \"board-head-context\">@time@</div>\n" +
+        "                                <div class = \"board-head-context \">评分：@score@</div>\n" +
+        "                            </div>\n" +
+        "                        </div>\n" +
+        "                    </div>\n" +
+        "                    <div class = \"board-text\">@content@</div>\n" +
+        "                </div>"
+    let xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function (){
+
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            // Response Correct
+            let jsonobj = JSON.parse(xmlhttp.responseText);
+            jsonobj = jsonobj.data;
+            if(jsonobj.length === 0){
+                //No data
+                alert("未找到相关课程");
+                document.getElementById("comment-container").innerHTML = "";
+                return;
+            }
+
+            //构造html代码
+            for (let i = 0;i<jsonobj.length;i++){
+                obj = jsonobj[i];
+                http += rawComment.replace("@time@", obj.create_time)
+                    .replace("@score@", window.localStorage.getItem(window.localStorage.getItem("curr_cid")))
+                    .replace("@content@", obj.comment)
+                    .replace("@number@", Math.floor(Math.random()*10));
+            }
+            http += "            </div>\n" +
+                "        </div>";
+            // 修改页面代码
+            document.getElementById("comment-container").innerHTML = http;
+
+            //移动页面
+            window.location.hash = "#comment-container"
+            history.pushState(null, null ,"comment.html");
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
 
 }
-var sendata {  //提交分数，id和评论
-    "pointV1": pointV1,
-    "pointV2": pointV2,
-    "pointV3": pointV3,
-    "content":content,
-    "id": id
-
-};
 
 function sendMassage() {
     $.ajax({
