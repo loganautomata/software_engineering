@@ -10,7 +10,7 @@ function searchClass(){
         "            <div class = \"container d-block\">";
 
     let rawClass = "                <div class = \"class-container\">\n" +
-        "                    <a class = \"class-link\" href = \"./comment.html\" target=\"_blank\">\n" +
+        "                    <a class = \"class-link\" href = \"./comment.html\" target=\"_blank\" onclick=\"setSelected(@cid@)\">\n" +
         "                        <div class = \"class\">\n" +
         "                            <div class = \"class-head d-block\">\n" +
         "                                <h3 class = \"class-title\"> 课程：@courseName@</br>授课教师：@teacher@</h3>\n" +
@@ -23,8 +23,10 @@ function searchClass(){
         "                        </div>\n" +
         "                    </a>\n" +
         "                </div>";
+
     let xmlhttp=new XMLHttpRequest();
-    let url = "https://api.loganren.xyz/course/course/search?keyword=" + data;
+    let url = "https://api.loganren.xyz/course/v1.0/course/search?keyword=" + data;
+
 
     xmlhttp.onreadystatechange = function (){
 
@@ -38,12 +40,14 @@ function searchClass(){
                 document.getElementById("classes-container").innerHTML = "";
                 return;
             }
+
             //构造html代码
             for (let i = 0;i<jsonobj.length;i++){
                 obj = jsonobj[i];
                 http += rawClass.replace("@courseName@", obj.coursename)
                     .replace("@teacher@", obj.teachername)
-                    .replace("@score@", obj.score);
+                    .replace("@score@", obj.score)
+                    .replace("@cid@", obj.cid);
             }
             http += "</div>";
             // 修改页面代码
@@ -56,4 +60,17 @@ function searchClass(){
     }
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
+}
+
+function setSelected(cid){
+    window.localStorage.setItem("curr_cid", cid);
+}
+
+function searchComment(){
+    let classId = window.localStorage.getItem("curr_cid", cid);
+    if(classId == null){
+        alert("curr cid no found.");
+        return;
+    }
+
 }
