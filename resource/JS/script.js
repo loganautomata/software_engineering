@@ -74,3 +74,32 @@ function searchComment(){
     }
 
 }
+var sendata {  //提交分数，id和评论
+    "pointV1": pointV1,
+    "pointV2": pointV2,
+    "pointV3": pointV3,
+    "content":content,
+    "id": id
+
+}
+
+function sendMassage() {
+    $.ajax({
+        url: "TestJsonServlet", //提交的路径
+        type: "post", //提交方式
+        data: 2,
+        dataType: "JSON", //规定请求成功后返回的数据
+        success: function(data) {
+            if (isStrEmpty(data.error)) {
+                alert(data.success);
+            } else {
+                alert(data.error);
+            }
+        },
+        error: function() {
+            alert("error!");
+        }
+    });
+
+
+}
