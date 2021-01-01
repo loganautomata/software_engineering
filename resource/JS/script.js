@@ -81,7 +81,7 @@ var sendata {  //提交分数，id和评论
     "content":content,
     "id": id
 
-}
+};
 
 function sendMassage() {
     $.ajax({
