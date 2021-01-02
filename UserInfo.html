@@ -41,7 +41,11 @@
         
         
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		
+        <script type="text/javascript">
+            if(window.localStorage.getItem("token") == null){
+                window.location.href ="login.html";
+            }
+        </script>
     </head>
     <body>
         <form name="UserInfor">

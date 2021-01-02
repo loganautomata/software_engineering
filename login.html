@@ -82,8 +82,8 @@
     </style>
   </head>
   <body>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="resource/JS/vue.js"></script>
+    <script src="resource/JS/axios.min.js"></script>
     <div class="box" id="app">
       <h2>用户登录</h2>
       <div class="input_box">
@@ -95,7 +95,7 @@
         <input id="upass" type="password" name="psw" placeholder="请输入密码" v-model="password">
       </div>
       <div class="input_box">
-        <input type="button" value="登录" class="btn" @click="fnLogin">
+        <input type="button" value="登录" class="btn"  @click="fnLogin">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" class="btn_Info" onclick="window.location.href='register.html'">注册</button>
       </div>

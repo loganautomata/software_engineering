@@ -1,4 +1,9 @@
 function Init(){
+    //is login
+    if(window.localStorage.getItem("token") == null){
+        window.location.href = "login.html";
+        return;
+    }
     //init avatar
     if(window.localStorage.getItem("avatarId") == null){
         window.localStorage.setItem("avatarId", Math.floor(Math.random()*10));
