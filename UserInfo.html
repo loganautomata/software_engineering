@@ -86,8 +86,17 @@
 	 
 		
     (function (){
-        var username = "cmq";
-        //let username=localStrorage.getItem("username");
+        //var username = "cmq";
+		window.localStorage = {
+    data: {},
+    setItem(key, value) {
+        this.data[key] = value;
+    },
+    getItem(key) {
+        return this.data[key];
+    }
+};
+        var username=window.localStorage.getItem("username");
         let token=localStorage.getItem("token");
 		//axios.defaults.headers.common['Authorization'] = token;
 		//let token = '';
