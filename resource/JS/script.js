@@ -1,3 +1,12 @@
+function Init(){
+    //init avatar
+    if(window.localStorage.getItem("avatarId") == null){
+        window.localStorage.setItem("avatarId", Math.floor(Math.random()*10));
+    }
+    document.getElementById("avatar").innerHTML = "<img class=\"avatar\" src=\"resource/img/avatars/"+
+        window.localStorage.getItem("avatarId") + ".png\">"
+}
+
 function searchClass(){
 
     data = document.getElementById("class_search").value;
