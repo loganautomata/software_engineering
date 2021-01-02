@@ -105,7 +105,7 @@ function searchComment(){
             jsonobj = jsonobj.data;
             if(jsonobj.length === 0){
                 //No data
-                alert("未找到相关课程");
+                //alert("未找到相关课程");
                 document.getElementById("comment-container").innerHTML = "";
                 return;
             }
@@ -151,6 +151,5 @@ function sendMassage() {
             alert("error!");
         }
     });
-
 
 }
