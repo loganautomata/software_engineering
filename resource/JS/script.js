@@ -170,7 +170,7 @@ function sendMassage() {
             }
         },
         error: function() {
-            alert("error!");
+            alert("error？!");
         }
     });
 
