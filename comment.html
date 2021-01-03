@@ -1,6 +1,6 @@
 <html>
 
-<head xmlns="http://www.w3.org/1999/html">
+<head>
     <meta charset="utf-8">
     <title>Comment</title>
 
@@ -9,18 +9,19 @@
     <script type="text/javascript" src = "resource/JS/script.js"></script>
     <script type="text/javascript" src="resource/JS/jquery.js"></script>
     <script type="text/javascript" src="resource/JS/grade.js"></script>
-    <script>searchComment()</script>
 </head>
 
 <body style="zoom:1">
 <div id = "root">
+
     <div class  = "begin_img_holder" id = "desktop" >
         <div class="header_box">
             <a href="UserInfo.html" target="_blank" id = "avatar"></a>
         </div>
         <script>Init()</script>
+        <script>searchComment()</script>
         <div class = background ></div>
-        <div class = "container" style="margin-left: auto; width: auto;margin-top: -150px">
+        <div class = "container" style="margin-left: auto; width: auto;margin-top: -20%">
             <h1 style="text-align: center; padding-bottom: 30px">我的评分</h1>
             <div class="content">
                 <div id="myPoint">
@@ -31,8 +32,8 @@
                     </div>
                 </div>
                 <div id="doPoint">
-                    <h3 style="text-align: center; padding-bottom: 30px; display: block">我的评分</h3>
-                    <table cellspacing="0" cellpadding="0" border="0">
+
+                    <table style="margin-top: 20px">
                         <tbody>
                         <tr>
                             <th>上课状态：</th>
@@ -83,18 +84,14 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="form1" name="form1">
-                    <input id="pointV1" type="hidden" value="5" name="pointV1" />
-                    <input id="pointV2" type="hidden" value="5" name="pointV2" />
-                    <input id="pointV3" type="hidden" value="5" name="pointV3" />
-                    <label>评论内容：<textarea id="content" name="content" rows="5" cols="50"></textarea></label>
-                    <input type="submit" class = submit style="font-size: 20px" onclick="postComment()" value="提交"/>
+                <div id="form1" style="margin-top: 20px">
+                    <label>评论内容：<textarea id="content" name="content" rows="5" cols="50" style="max-width: 300px; max-height: 120px"></textarea></label>
+                    <input type="submit" class = submit style="font-size: 20px" onclick="postComment();" value="提交"/>
                 </div>
             </div>
         </div>
 
     </div>
-
 
     <div class = "container bg-white" id = "comment-container">
         <!--div class = "container anchor pb-5">
@@ -121,10 +118,7 @@
 
     <footer class = "foot bg-dimmed">
         <div class="foot-container">
-            <p class = "d-block">Copyright &copy 2020, ******.</p>
-            <p class = d-block>Contact Us:
-                <a href="mailto:emample@example.com">emample@example.com</a>
-            </p>
+            <p class = "d-block">Copyright &copy 2020 中国海洋大学公共课评价网</p>
         </div>
     </footer>
 

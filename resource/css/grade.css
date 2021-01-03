@@ -1,55 +1,3 @@
-BODY {
-    padding-right:0px;padding-left:0px;font-size:12px;background:#333;padding-bottom:40px;margin:0px;line-height:14px;padding-top:40px
-}
-FORM {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-UL {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-OL {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-H1 {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-H2 {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-H3 {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-H4 {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-H5 {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-H6 {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-P {
-    padding-right:0px;padding-left:0px;padding-bottom:0px;margin:0px;padding-top:0px
-}
-INPUT {
-    font-size:12px
-}
-textAREA {
-    font-size:12px
-}
-SELECT {
-    font-size:12px
-}
-BUTTON {
-    font-size:12px
-}
-IMG {
-    border-top-style:none;border-right-style:none;border-left-style:none;border-bottom-style:none
-}
-a{
-    color:#999;text-decoration:underline
-}
-
 #box {
     border-right:#666 5px solid;border-top:#666 5px solid;background:#ccc;margin:0px auto;border-left:#666 5px solid;width:400px;border-bottom:#666 5px solid
 }
@@ -57,14 +5,11 @@ a{
     padding-right:10px;padding-left:10px;font-size:14px;background:#999;padding-bottom:0px;color:#fff;padding-top:8px;height:22px
 }
 #box .content {
-    padding-right:20px;padding-left:20px;padding-bottom:20px;padding-top:20px
-}
-ADDRESS {
-    display:block;margin:20px auto 0px;width:400px
+    padding-right:20px;padding-left:20px;padding-bottom:20px;padding-top:20px;align-content: center;
 }
 #myPoint {
     min-height: 70px;
-    padding-right:0px;padding-left:0px;padding-bottom:5px;overflow:hidden;padding-top:0px;border-bottom:#ddd 1px solid;height:50px
+    padding-right:0px;padding-left:0px;margin-bottom:15px;overflow:hidden;padding-top:0px;border-bottom:#ddd 1px solid;height:50px
 }
 #myPoint SPAN {
     float:left;line-height:64px;font-family:Tahoma
@@ -82,7 +27,7 @@ ADDRESS {
     vertical-align:middle;margin-right:5px
 }
 #doPoint P {
-    margin-top: 5px;
+    margin-top: 25px;
     padding-right:0px;padding-left:0px;padding-bottom:10px;padding-top:10px
 }
 #doPoint TR TD {
@@ -130,13 +75,4 @@ ADDRESS {
 }
 #doPoint .star1 {
     background:url(../img/star_small.gif) no-repeat 2px -180px
-}
-FORM {
-    margin:15px 0px 0px
-}
-FORM LABEL {
-    display:block;margin:5px 0px
-}
-FORM textAREA {
-    width:350px
 }

@@ -101,10 +101,9 @@ function searchComment(){
     let rawComment = "                <div class = \"board-holder comment\">\n" +
         "                    <div class = \"board-head bg-dimmed\">\n" +
         "                        <div class = d-flex style=\"width: 100%\">\n" +
-        "                            <img src=\"resource/img/avatars/@number@.png\" style=\"width: 60px; border-radius: 20px\">\n" +
+        "                            <img class= \"comment-avatar\"src=\"resource/img/avatars/@number@.png\">\n" +
         "                            <div class = \"d-block right\" style=\"margin-top: 10px\">\n" +
         "                                <div class = \"board-head-context\">@time@</div>\n" +
-        "                                <div class = \"board-head-context \">评分：@score@</div>\n" +
         "                            </div>\n" +
         "                        </div>\n" +
         "                    </div>\n" +
@@ -125,12 +124,14 @@ function searchComment(){
             }
 
             //构造html代码
+            let curr = 0;
             for (let i = 0;i<jsonobj.length;i++){
                 obj = jsonobj[i];
+                curr +=Math.floor(Math.random()*10);
+                curr%=10;
                 http += rawComment.replace("@time@", obj.create_time)
-                    .replace("@score@", window.localStorage.getItem(window.localStorage.getItem("curr_cid")))
                     .replace("@content@", obj.comment)
-                    .replace("@number@", Math.floor(Math.random()*10));
+                    .replace("@number@", curr);
             }
             http += "            </div>\n" +
                 "        </div>";
@@ -148,9 +149,18 @@ function searchComment(){
 
 }
 
-
+function clearLocal(){
+    window.localStorage.clear();
+}
 
 function postComment() {
+    if(document.getElementById("content").value.length === 0){
+        alert("请先输入评论。");
+        return;
+    }else if(document.getElementById("content").value.length > 200){
+        alert("评论长度过长。")
+        return;
+    }
     var commentData = {
         "username": window.localStorage.getItem("username"),
         "cid": window.localStorage.getItem("curr_cid"),
@@ -164,16 +174,32 @@ function postComment() {
         beforeSend:function (request){
             request.setRequestHeader("Authorization","Bearer " + window.localStorage.getItem("token"));
         },
-        success: function(data) {
-            if (isStrEmpty(data.error)) {
-                alert(data.success);
-            } else {
-                alert(data.error);
-            }
+        success: function() {
+            alert("评论成功");
+            searchComment();
+            document.getElementById("content").value = "";
         },
         error: function() {
-            alert("error!");
+            clearLocal();
+            alert("评论失败,登录凭证已过期，确认以重新登录。");
+            window.location.href = "login.html";
         }
     });
-
+    postScore();
+}
+function postScore(){
+    var commentData = {
+        "username": window.localStorage.getItem("username"),
+        "cid": window.localStorage.getItem("curr_cid"),
+        "score":(parseInt(document.getElementById("score").innerHTML[5]) + parseInt(document.getElementById("score").innerHTML[20])/10)*10
+    }
+    $.ajax({
+        url: "https://api.loganren.xyz/course/v1.0/score",
+        type: "post", //提交方式
+        data: commentData,
+        dataType: "JSON", //规定请求成功后返回的数据
+        beforeSend:function (request){
+            request.setRequestHeader("Authorization","Bearer " + window.localStorage.getItem("token"));
+        },
+    })
 }
