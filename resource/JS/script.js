@@ -148,20 +148,22 @@ function searchComment(){
 
 }
 
-var commentData = {
-    "id": id,
-    "course_id": course_id,
-    "username": username,
-    "score": score,
-    "create_time": create_time
-}
 
-function sendMassage() {
+
+function postComment() {
+    var commentData = {
+        "username": window.localStorage.getItem("username"),
+        "cid": window.localStorage.getItem("curr_cid"),
+        "comment":document.getElementById("content").value
+    }
     $.ajax({
-        url: "https://api.loganren.xyz/course",
+        url: "https://api.loganren.xyz/course/v1.0/comment",
         type: "post", //提交方式
         data: commentData,
         dataType: "JSON", //规定请求成功后返回的数据
+        beforeSend:function (request){
+            request.setRequestHeader("Authorization","Bearer " + window.localStorage.getItem("token"));
+        },
         success: function(data) {
             if (isStrEmpty(data.error)) {
                 alert(data.success);
@@ -170,7 +172,7 @@ function sendMassage() {
             }
         },
         error: function() {
-            alert("error？!");
+            alert("error!");
         }
     });
 

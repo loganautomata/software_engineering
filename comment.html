@@ -24,9 +24,9 @@
             <h1 style="text-align: center; padding-bottom: 30px">我的评分</h1>
             <div class="content">
                 <div id="myPoint">
-                    <span><big>5</big><small>.0</small></span>
+                    <span id = "score"><big>5</big><small>.0</small></span>
                     <div>
-                        <img src="./resource/img/star5.gif" />
+                        <img src="./resource/img/star5.gif"/>
                         <em>(一般)</em>
                     </div>
                 </div>
@@ -83,13 +83,13 @@
                         </tbody>
                     </table>
                 </div>
-                <form id="form1" name="form1" action="" method="get">
+                <div id="form1" name="form1">
                     <input id="pointV1" type="hidden" value="5" name="pointV1" />
                     <input id="pointV2" type="hidden" value="5" name="pointV2" />
                     <input id="pointV3" type="hidden" value="5" name="pointV3" />
                     <label>评论内容：<textarea id="content" name="content" rows="5" cols="50"></textarea></label>
-                    <input type="submit" class = submit style="font-size: 20px" onclick="sendMassage()" value="提交"/>
-                </form>
+                    <input type="submit" class = submit style="font-size: 20px" onclick="postComment()" value="提交"/>
+                </div>
             </div>
         </div>
 
