@@ -148,11 +148,19 @@ function searchComment(){
 
 }
 
+var commentData = {
+    "id": id,
+    "course_id": course_id,
+    "username": username,
+    "score": score,
+    "create_time": create_time
+}
+
 function sendMassage() {
     $.ajax({
-        url: "TestJsonServlet", //提交的路径
+        url: "https://api.loganren.xyz/course",
         type: "post", //提交方式
-        data: 2,
+        data: commentData,
         dataType: "JSON", //规定请求成功后返回的数据
         success: function(data) {
             if (isStrEmpty(data.error)) {
